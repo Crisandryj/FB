@@ -6,16 +6,18 @@ class User < ApplicationRecord
  #has_many :name
  #class_name: "Name"
  #foreign_key: :name
- #has_many: "name", through: :name
+ #has_many :name, through: :name
 
   #user has many friendships as a follower
   #user has man friendships as a followee
 
-has_many :friend_followers, class_name: "Friendship", foreign_key: :follower_id
-has_many :followees, through: :friend_followers
+ has_many :friend_followers, class_name: "Friendship"
+ has_many :followers, through: :friend_followers
 
-has_many :friend_followees, class_name: "Friendship", foreign_key: :followee_id
-has_many :followers, through: :friend_followees
+
+ has_many :friend_followees, class_name: "Friendship"
+ has_many :followees, through: :friend_followees
+
 
 
 
