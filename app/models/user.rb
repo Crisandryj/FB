@@ -11,15 +11,11 @@ class User < ApplicationRecord
   #user has many friendships as a follower
   #user has man friendships as a followee
 
- has_many :friend_followers, class_name: "Friendship", foreign_key: :followee_id
- has_many :followers, through: :friend_followers
+  has_many :follower_friends, class_name: "Friendship", foreign_key: :followee_id
+  has_many :followers, through: :follower_friends
 
-
- has_many :friend_followees, class_name: "Friendship", foreign_key: :follower_id
- has_many :followees, through: :friend_followees
-
-
-
+  has_many :followee_friends, class_name: "Friendship", foreign_key: :follower_id
+  has_many :followees, through: :followee_friends
 
 
 
