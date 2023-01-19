@@ -17,6 +17,6 @@ class User < ApplicationRecord
   has_many :followee_friends, class_name: "Friendship", foreign_key: :follower_id
   has_many :followees, through: :followee_friends
 
-
+  #requests
 
 end
