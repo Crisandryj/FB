@@ -18,5 +18,11 @@ class User < ApplicationRecord
   has_many :followees, through: :followee_friends
 
   #requests
+  has_many :friendship_requests, class_name: "Friendship", foreign_key: :requestee_id
+  has_many :requestors, through: :friendship_requests
+
+  has_many :freindship_requested, class_name: "Friendship", foreign_key: :requestor_id
+  has_many :requestees, through: :freindship_requested
+
 
 end

@@ -17,10 +17,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_135606) do
   create_table "friendships", force: :cascade do |t|
     t.bigint "follower_id"
     t.bigint "followee_id"
+    t.bigint "requestor_id"
+    t.bigint "requestee_id"
+    t.boolean "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followee_id"], name: "index_friendships_on_followee_id"
     t.index ["follower_id"], name: "index_friendships_on_follower_id"
+    t.index ["requestee_id"], name: "index_friendships_on_requestee_id"
+    t.index ["requestor_id"], name: "index_friendships_on_requestor_id"
   end
 
   create_table "users", force: :cascade do |t|
