@@ -27,8 +27,12 @@ class User < ApplicationRecord
   #posts
   has_many :authored_posts, class_name: "Post"
 
-
   #comments
   has_many :comments
   has_many :commented_posts, through: :comments, source: :post
+
+  #likes
+  has_many :likes, as: :likeable
+  has_many :liked_posts, through: :likeable
+  has_many :liked_comments, through: :likeable
 end
