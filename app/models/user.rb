@@ -24,5 +24,11 @@ class User < ApplicationRecord
   has_many :freindship_requested, class_name: "Friendship", foreign_key: :requestor_id
   has_many :requestees, through: :freindship_requested
 
+  #posts
+  has_many :authored_posts, class_name: "Post"
 
+
+  #comments
+  has_many :comments
+  has_many :commented_posts, through: :comments, source: :post
 end
