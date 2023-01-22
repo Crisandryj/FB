@@ -33,6 +33,5 @@ class User < ApplicationRecord
 
   #likes
   has_many :likes, as: :likeable
-  has_many :liked_posts, through: :likeable
-  has_many :liked_comments, through: :likeable
+
 end
