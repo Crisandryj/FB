@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_many :commented_posts, through: :comments, source: :post
 
   #likes
-  has_many :likes, as: :likeable
+  has_many :likes
+  has_many :posts, through: :likes, source: :likeable, source_type: 'Post'
+  has_many :liked_comments, foreign_key: :comments, through: :likes, source: :likeable, source_type: 'Comment'
 
 end
