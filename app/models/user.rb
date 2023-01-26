@@ -28,12 +28,12 @@ class User < ApplicationRecord
   has_many :authored_posts, class_name: "Post"
 
   #comments
-  has_many :comments
+  has_many :authored_comments, class_name: "Comment"
   has_many :commented_posts, through: :comments, source: :post
 
   #likes
   has_many :likes
-  has_many :posts, through: :likes, source: :likeable, source_type: 'Post'
-  has_many :comments, through: :likes, source: :likeable, source_type: 'Comment'
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
+  has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment'
 
 end
