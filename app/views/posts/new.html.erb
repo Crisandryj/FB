@@ -1,9 +1,8 @@
 <div>
- <%= form_with model: @post do |form| %>
+  <%= form_with model: @post do |form| %>
   <% form.hidden_field :user, value: @user%>
-  <p><%= form.label :body, "Post:" %></p>
-  <p><%= form.text_area :body, size: "60x10"  %></p>
-
-  <p><%= form.submit "Submit" %></p>
- <% end %>
+    <p><%= form.label :body, "Post:" %></p>
+    <p><%= form.text_area :body, size: "60x10" %></p>
+    <p><%= form.submit "Submit" %></p>
+  <% end %>
 </div>
