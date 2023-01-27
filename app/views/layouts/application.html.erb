@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <p><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
