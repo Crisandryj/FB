@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def new
@@ -8,7 +9,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create(post_params)
+    @user = current_user
+    @post = @user.authored_posts.create(post_params)
     if @post.save
       redirect_to @post
     else
@@ -23,7 +25,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:user).permit(:body)
+    params.require(:post).permit(:body)
   end
 
 end
