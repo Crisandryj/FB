@@ -10,17 +10,21 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <div class="post">
+      <h3>Post</h3>
       <p><%= post.body %></p>
       <p><%= post.user.email %></p>
+      <h3>Comments</h3>
+      <% post.comments.each do |comment|%>
+        <li><%= comment.body %></li>
+      <% end %>
     </div>
     <div>
       <%= form_with model: @comment do |comment| %>
-
       <%= comment.hidden_field :post_id, value: post.id %>
-        <p><%= comment.label :body %></p>
-        <p><%= comment.text_area :body %></p>
-        <p><%= comment.submit %></p>
-      <% end %>
-    </div>
-  <% end %>
+      <p><%= comment.label :body %></p>
+      <p><%= comment.text_area :body %></p>
+      <p><%= comment.submit %></p>
+    <% end %>
+  </div>
+<% end %>
 </div>
