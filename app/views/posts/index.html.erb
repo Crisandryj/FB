@@ -3,7 +3,7 @@
   <% form.hidden_field :user, value: @user%>
     <p><%= form.label :body, "Post:" %></p>
     <p><%= form.text_area :body, size: "60x10" %></p>
-    <p><%= form.submit "Submit" %></p>
+    <p><%= form.submit "post" %></p>
   <% end %>
 </div>
 
@@ -12,6 +12,13 @@
       <div class = "post">
         <p><%= post.body %></p>
         <p><%= post.user.email %></p>
+      </div>
+      <div>
+        <%= form_with model: @comment do |c| %>
+         <p><%= c.label :body, "Comment" %></p>
+         <p> <%= c.text_area :body %></p>
+         <p><%= c.submit "Comment"%></p>
+         <% end %>
       </div>
   <% end %>
 </div>
