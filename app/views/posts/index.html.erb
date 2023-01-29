@@ -11,11 +11,11 @@
   <% @posts.each do |post| %>
     <div class="post">
       <p><%= post.body %></p>
-      <p><%= post.id %></p>
       <p><%= post.user.email %></p>
     </div>
     <div>
       <%= form_with model: @comment do |comment| %>
+
       <%= comment.hidden_field :post_id, value: post.id %>
         <p><%= comment.label :body %></p>
         <p><%= comment.text_area :body %></p>
