@@ -9,16 +9,17 @@
 
 <div class="posts">
   <% @posts.each do |post| %>
-      <div class = "post">
+      <div class="post">
         <p><%= post.body %></p>
         <p><%= post.user.email %></p>
       </div>
       <div>
-        <%= form_with model: @comment do |c| %>
-         <p><%= c.label :body, "Comment" %></p>
-         <p> <%= c.text_area :body %></p>
-         <p><%= c.submit "Comment"%></p>
-         <% end %>
+        <%= form_with model: @comment do |comment| %>
+        <% comment.hidden_field :post_id, value: post.id %>
+          <p><%= comment.label :body %></p>
+          <p><%= comment.text_area :body %></p>
+          <p><%= comment.submit %></p>
+        <% end %>
       </div>
-  <% end %>
+    <% end %>
 </div>
