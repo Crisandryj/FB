@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'like/new'
+  get 'like/create'
+  get 'like/index'
+  get 'like/show'
+  get 'like/edit'
   devise_for :users, controllers: {
      sessions: 'users/sessions'
    }
