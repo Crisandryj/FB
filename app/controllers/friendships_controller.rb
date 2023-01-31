@@ -1,8 +1,16 @@
 class FriendshipsController < ApplicationController
   def new
+    @friendship = Friendship.new
   end
 
   def create
+    @user = current_user
+    @friendship = Friendship.create(friendship_params)
+    if @friendship.save
+      redirect_to @friendship
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -12,5 +20,11 @@ class FriendshipsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+
+  def friendship_params
+    params.require(:friendship).permit(:requestor_id, :requestee_id)
   end
 end

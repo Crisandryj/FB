@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def new
     @user = User.new
-    @friendship = Friendship.new
   end
 
   def index
+    @friendship = Friendship.new
     @users = User.all
   end
 
