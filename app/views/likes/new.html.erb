@@ -1,0 +1,10 @@
+<% if @like.errors.any? %>
+
+  <h3>The following errors prevented the comments from being saved:</h3>
+  <ul>
+    <% @like.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+
+<% end %>

@@ -30,8 +30,9 @@
    </div>
    <div>
      <%= form_with model: @like do |like| %>
-     <%= like.hidden_field :post_id, value: post.id %>
      <p><%= like.hidden_field :liked, value: true %></p>
+     <p><%= like.hidden_field :likeable_id, value: post.id %></p>
+     <p><%= like.hidden_field :likeable_type, value: "Post" %></p>
      <p><%= like.submit "Like" %></p>
    <% end %>
   </div>

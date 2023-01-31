@@ -1,4 +1,4 @@
-class LikeController < ApplicationController
+class LikesController < ApplicationController
   def new
     @like = Like.new
   end
@@ -6,6 +6,7 @@ class LikeController < ApplicationController
   def create
     @user = current_user
     @like = @user.likes.create(like_params)
+    p "this went thru"
     if @like.save
       redirect_to @like
     else
@@ -25,6 +26,6 @@ class LikeController < ApplicationController
   private
 
   def like_params
-    params.require(:like).permit(:liked, :post_id)
+    params.require(:like).permit(:liked, :post_id, :likeable_id, :likeable_type)
   end
 end
