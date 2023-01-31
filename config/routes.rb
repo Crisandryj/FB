@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/new'
+  get 'users/index'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/show'
   get 'like/new'
   get 'like/create'
   get 'like/index'
