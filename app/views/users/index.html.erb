@@ -3,6 +3,8 @@
   <%= form_with model: @friendship do |friend| %>
     <p><%= friend.hidden_field :follower_id, value: current_user.id %></p>
     <p><%= friend.hidden_field :followee_id, value: user.id %></p>
+    <p><%= friend.hidden_field :requestor_id, value: current_user.id %></p>
+    <p><%= friend.hidden_field :requestee_id, value: user.id %></p>
     <p><%= friend.hidden_field :accepted, value: false %></p>
     <p><%= friend.submit %></p>
   <% end %>
