@@ -1,13 +1,25 @@
-<% @users.each do |user| %>
-  <li> <%=user.email%> </li>
-  <%= form_with model: @friendship do |friend| %>
-    <p><%= friend.hidden_field :follower_id, value: current_user.id %></p>
-    <p><%= friend.hidden_field :followee_id, value: user.id %></p>
-    <p><%= friend.hidden_field :requestor_id, value: current_user.id %></p>
-    <p><%= friend.hidden_field :requestee_id, value: user.id %></p>
-    <p><%= friend.hidden_field :accepted, value: false %></p>
+<div>
+  <% @users.each do |user| %>
+    <li> <%=user.email%> </li>
+    <%= form_with model: @friendship do |friend| %>
+      <p><%= friend.hidden_field :follower_id, value: current_user.id %></p>
+      <p><%= friend.hidden_field :followee_id, value: user.id %></p>
+      <p><%= friend.hidden_field :requestor_id, value: current_user.id %></p>
+      <p><%= friend.hidden_field :requestee_id, value: user.id %></p>
+      <p><%= friend.hidden_field :accepted, value: false %></p>
 
-    <p><%= friend.submit "Request Friend" %></p>
+      <p><%= friend.submit "Request Friend" %></p>
+
+    <% end %>
 
   <% end %>
+
+</div>
+
+<div>
+<% @users.each do |user| %>
+  <%user.friendship_requests.all.each do |request| %>
+  <%= User.find(request.requestor_id).email %>
 <% end %>
+<% end %>
+</div>
