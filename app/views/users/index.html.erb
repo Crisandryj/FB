@@ -6,6 +6,8 @@
     <p><%= friend.hidden_field :requestor_id, value: current_user.id %></p>
     <p><%= friend.hidden_field :requestee_id, value: user.id %></p>
     <p><%= friend.hidden_field :accepted, value: false %></p>
-    <p><%= friend.submit %></p>
+
+    <p><%= friend.submit "Request Friend" %></p>
+
   <% end %>
 <% end %>

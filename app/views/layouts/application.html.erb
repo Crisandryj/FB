@@ -14,8 +14,8 @@
     <% if current_user %>
       <p>User: <%= current_user.email %></p>
       <p><%= button_to 'Sign Out', destroy_user_session_path, method: :delete %></p>
+      <p><%= button_to 'Requests', users_path, method: :get if current_user.requestors.count > 0 %></p>
     <% end %>
-    <p></p>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
