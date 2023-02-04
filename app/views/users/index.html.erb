@@ -20,6 +20,7 @@
 <% @users.each do |user| %>
   <%user.friendship_requests.all.each do |request| %>
   <%= User.find(request.requestor_id).email %>
+  <%= button_to  'Accept', {:controller => "friendships",:action => "update", :id => request.id, :accepted => 'true'}, :method=>:patch  %>
 <% end %>
 <% end %>
 </div>
