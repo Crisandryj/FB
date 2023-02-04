@@ -20,6 +20,11 @@ class FriendshipsController < ApplicationController
   def show
   end
 
+  def destroy
+    @friendship = Friendship.find(params[:id])
+    @friendship.destroy
+  end
+
   def edit
     @friendship = Friendship.find(params[:id])
   end
