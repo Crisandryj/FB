@@ -2,7 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
-
+#gravtar gem
+gem 'liquid-md5'
 #postgres
 gem 'pg'
 
