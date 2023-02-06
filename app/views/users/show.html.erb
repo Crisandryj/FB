@@ -1,2 +1,11 @@
-<h1><%= current_user.email %></h1>
-<img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50" alt="">
+<h1>User: <%= current_user.email %></h1>
+<img src="http://gravatar.com/avatar/{{ current_user.email | downcase | md5 }}?s=144" alt="">
+<p>Age:</p>
+<p>Relationship Status:</p>
+<div>
+    <h3> Posts </h3>
+    <% @posts.each do |post| %>
+      <li><%= post.body %>  </li>
+    <% end %>
+
+</div>
