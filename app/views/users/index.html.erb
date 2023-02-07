@@ -1,7 +1,10 @@
 <div>
   <% @users.each do |user| %>
-    <li> <%=user.email%> </li>
-    <%= form_with model: @friendship do |friend| %>
+    <li>
+      <%=user.email%>
+    </li>
+    <% if current_user.id != user.id %>
+      <%= form_with model: @friendship do |friend| %>
       <p><%= friend.hidden_field :follower_id, value: current_user.id %></p>
       <p><%= friend.hidden_field :followee_id, value: user.id %></p>
       <p><%= friend.hidden_field :requestor_id, value: current_user.id %></p>
@@ -9,20 +12,21 @@
       <p><%= friend.hidden_field :accepted, value: false %></p>
 
       <p><%= friend.submit "Request Friend" %></p>
-
     <% end %>
-
   <% end %>
+
+<% end %>
 
 </div>
 
 <div>
 <% @users.each do |user| %>
   <%user.friendship_requests.all.each do |request| %>
-  <%= User.find(request.requestor_id).email %>
-  <%= button_to  'Accept', {:controller => "friendships",:action => "update", :id => request.id, :accepted => 'true'}, :method=>:patch  %>
-  <%= button_to  'Reject', {:controller => "friendships",:action => "destroy", :id => request.id}, :method=>:delete  %>
+    <%= User.find(request.requestor_id).email %>
+    <%= button_to 'Accept', {:controller => "friendships",:action => "update", :id => request.id, :accepted => 'true'}, :method=>:patch %>
 
-<% end %>
+    <%= button_to 'Reject', {:controller => "friendships",:action => "destroy", :id => request.id}, :method=>:delete %>
+
+  <% end %>
 <% end %>
 </div>

@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
   end
 
   def create
-    raise params.inspect
     @user = current_user
     @friendship = Friendship.create(friendship_params)
     if @friendship.save
