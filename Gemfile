@@ -2,6 +2,8 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
+#mailer
+gem "letter_opener", group: :development
 #login with facebook
 gem 'omniauth-facebook'
 
