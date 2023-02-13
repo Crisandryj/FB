@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+
     respond_to do |format|
       if @user.save
         # Tell the UserMailer to send a welcome email after save
@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-
+    super
   end
 
   # GET /resource/edit
